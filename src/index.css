@@ -28,7 +28,7 @@ body {
 }
 
 .numberText {
-  font: italic 13px sans-serif;
+  font: 13px monospace;
   fill: black;
 }
 

@@ -59,13 +59,14 @@ class Cell extends Component {
     const index = this.props.index
     const xPosition = (index % settings.GRIDSIZE) * settings.CELLSIZE
     const yPosition = Math.floor(index/settings.GRIDSIZE) * settings.CELLSIZE
-    // TODO define xPositionText and yPositionText here instead of inline calculation
+    const xPositionText = xPosition + 9
+    const yPositionText = yPosition + 18
 
     // TODO move styling to CSS
     return(
       <g>
         <rect className={this.props.isFib ? "cell_fib" : "cell"} height={settings.CELLSIZE} width={settings.CELLSIZE} x={xPosition} y={yPosition} strokeWidth="2" stroke = "#000000"/>
-        <text className="numberText" x={xPosition + 8} y={yPosition + 17}>{this.props.value !== 0 ? this.props.value : ""}</text>
+        <text className="numberText" x={xPositionText} y={yPositionText}>{this.props.value !== 0 ? this.props.value : ""}</text>
       </g>
     )
   }
