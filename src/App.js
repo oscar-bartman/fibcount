@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
 import * as utils from './utils.js'
+import * as settings from './settings.js'
 
 const values = [];
-const GRIDSIZE = 50;
-const CELLSIZE = 30;
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-      {/* Should we pass GRIDSIZE as a prop to Grid rather? */}
+      {/* Should we pass settings.GRIDSIZE as a prop to Grid rather? */}
         <Grid />
       </div>
     );
@@ -25,12 +24,15 @@ class Grid extends Component {
   }
 
   handleClick(e) {
-    utils.handleClick(e)
+    const dimensions = e.target.getBoundingClientRect()
+    const index = utils.getUpdateIndices(e.clientX - dimensions.left, e.clientY - dimensions.top)
+    console.log(index)
   }
 
   render() {
-    const height = 50 * CELLSIZE 
-    const width = 50 * CELLSIZE
+    // TODO use settings.GRIDSIZE instead
+    const height = 50 * settings.CELLSIZE 
+    const width = 50 * settings.CELLSIZE
     
     return (
       <svg height={height} width={width}>
@@ -51,18 +53,18 @@ class Cell extends Component {
 
   render() {
     const index = this.props.index
-    const xPosition = (index % GRIDSIZE) * CELLSIZE
-    const yPosition = Math.floor(index/GRIDSIZE) * CELLSIZE
+    const xPosition = (index % settings.GRIDSIZE) * settings.CELLSIZE
+    const yPosition = Math.floor(index/settings.GRIDSIZE) * settings.CELLSIZE
 
     //TODO move styling to CSS
-    return <rect height={CELLSIZE} width={CELLSIZE} x = {xPosition} y = {yPosition} strokeWidth="2" stroke="#000000" fill="#FF0000"/>
+    return <rect height={settings.CELLSIZE} width={settings.CELLSIZE} x={xPosition} y={yPosition} strokeWidth="2" stroke="#000000" fill="#FF0000"/>
   }
 }
 
 //TODO move helpers to some util module we can import into here
 //HELPERS
 function initGrid() {
-  for (let i = 0; i < GRIDSIZE * GRIDSIZE; i++) {
+  for (let i = 0; i < settings.GRIDSIZE * settings.GRIDSIZE; i++) {
     values[i] = 0;
   }
 }
