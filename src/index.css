@@ -16,10 +16,6 @@ body {
   fill: black;
 }
 
-.cell { 
-  fill: rgb(219, 8, 8)
-}
-
 .clickField {
   stroke:#fff;
   fill:#fff;
