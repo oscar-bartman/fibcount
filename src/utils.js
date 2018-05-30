@@ -23,23 +23,23 @@ export function initGrid() {
 
 export function checkFibonacci(values) {
     const fibLists = []
-    for (let index = 0; index < values.length; index++) {
-        if (values[index] === 1 && values[index + 1] ===  1) {
-            let fibList = [index, index + 1]
-            let iterator = 2
-            let fibIndex = 2
-            while(values[index + iterator] === values[index + iterator - 2] + values[index + iterator - 1] && iterator <= 4) {
-                fibList[fibIndex] = index + iterator
-                fibIndex++
-                iterator++
-            } 
-            if (fibList.length === 5) {
-                fibLists.push(fibList)
+    for (let i = 0; i < values.length - 4; i++) {
+        if (values[i] > 0) {
+            let fib = true
+            for (let j = 0; j < 3; j++) {
+                if (values[i + j + 2] !== values[i + j] + values[i + j + 1]) {
+                    fib = false
+                }
             }
-        }
+            if (fib) {
+                for (let j = 0; j < 5; j++) {
+                    fibLists.push(i + j)
+                }
+            }
+        } 
     }
     // flat() is not supported yet, MDN suggests I use reduce instead
-    return fibLists.reduce((acc, val) => acc.concat(val), [])
+    return fibLists
 }
 
 
