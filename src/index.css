@@ -20,6 +20,32 @@ body {
   fill: rgb(219, 8, 8)
 }
 
+.clickField {
+  stroke:#fff;
+  fill:#fff;
+  fill-opacity:0;
+  stroke-opacity:0;
+}
+
+.numberText {
+  font: italic 13px sans-serif;
+  fill: black;
+}
+
+.cell { 
+  fill: tomato
+}
+
 .cell_fib {
-  fill: green
+  fill: tomato;
+  animation-name: fibToNormal;
+  animation-duration: 1s;
+}
+
+@keyframes fibToNormal {
+  0% {
+    fill: olive
+  } 100% {
+    fill: tomato
+  }
 }

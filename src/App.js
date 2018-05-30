@@ -71,8 +71,4 @@ class Cell extends Component {
   }
 }
 
-//TODO move helpers to some util module we can import into here
-//HELPERS
-
-
 export default App;
