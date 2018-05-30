@@ -10,3 +10,8 @@ body {
   fill-opacity:0;
   stroke-opacity:0;
 }
+
+.numberText {
+  font: italic 19px sans-serif;
+  fill: black;
+}
