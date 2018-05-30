@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import * as utils from './utils.js'
 
 const values = [];
 const GRIDSIZE = 50;
@@ -20,10 +21,12 @@ class Grid extends Component {
   constructor(props) {    
     super(props)
     initGrid()
-    //...
+    this.handleClick = this.handleClick.bind(this)
   }
 
-  //...
+  handleClick(e) {
+    utils.handleClick(e)
+  }
 
   render() {
     const height = 50 * CELLSIZE 
@@ -34,6 +37,7 @@ class Grid extends Component {
         {values.map((v, i) => 
           <Cell index={i} key={i.toString()}/>
         )}
+        <g onClick={this.handleClick}><rect className="clickField" height={height} width={width} /></g>
       </svg>
     )
   }
