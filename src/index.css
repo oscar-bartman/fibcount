@@ -12,6 +12,14 @@ body {
 }
 
 .numberText {
-  font: italic 19px sans-serif;
+  font: italic 13px sans-serif;
   fill: black;
+}
+
+.cell { 
+  fill: rgb(219, 8, 8)
+}
+
+.cell_fib {
+  fill: green
 }

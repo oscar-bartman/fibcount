@@ -13,6 +13,36 @@ export function getUpdateIndices(x, y) {
     return indices
 }
 
+export function initGrid() {
+    const values = []
+    for (let i = 0; i < settings.GRIDSIZE * settings.GRIDSIZE; i++) {
+        values[i] = 0;
+    }
+    return values
+}
+
+export function checkFibonacci(values) {
+    const fibLists = []
+    for (let index = 0; index < values.length; index++) {
+        if (values[index] === 1 && values[index + 1] ===  1) {
+            let fibList = [index, index + 1]
+            let iterator = 2
+            let fibIndex = 2
+            while(values[index + iterator] === values[index + iterator - 2] + values[index + iterator - 1] && iterator <= 4) {
+                fibList[fibIndex] = index + iterator
+                fibIndex++
+                iterator++
+            } 
+            if (fibList.length === 5) {
+                fibLists.push(fibList)
+            }
+        }
+    }
+    // flat() is not supported yet, MDN suggests I use reduce instead
+    return fibLists.reduce((acc, val) => acc.concat(val), [])
+}
+
+
 // converts client coords into the index of the square clicked
 function toGridCoords(x, y){
     const rows = Math.floor(y/settings.CELLSIZE)
