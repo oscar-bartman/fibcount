@@ -32,9 +32,13 @@ export function checkFibonacci(values) {
     for (let i = 0; i < values.length - 4; i++) {
         if (sequence.includes(values[i])) {
             let fib = true
-            for (let j = 0; j < 3; j++) {
-                if (values[i + j + 2] !== values[i + j] + values[i + j + 1]) {
-                    fib = false
+            if (values[i] === values[i+1] && values[i] !== 1) {
+                fib = false
+            } else {
+                for (let j = 0; j < 3; j++) {
+                    if (values[i + j + 2] !== values[i + j] + values[i + j + 1]) {
+                        fib = false
+                    }
                 }
             }
             if (fib) {
