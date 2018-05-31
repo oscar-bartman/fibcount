@@ -54,7 +54,6 @@ class Grid extends Component {
 }
 
 class Cell extends Component {
-  
   render() {
     const index = this.props.index
     const xPosition = (index % settings.GRIDSIZE) * settings.CELLSIZE
